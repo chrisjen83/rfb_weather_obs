@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Mount Kuring-Gai Weather Observations</title>
+  <meta name="description" content="Reading UWeather API of local weather sensors">
+  <meta name="author" content="Christopher Jenkins">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Set a refresh for 60sec for Weather Observation report -->
+  <script>
+  $(document).ready(function()
+  {
+    setInterval(function()
+      {
+          $("#weather_sensors").fadeOut('slow').load(window.location.href + " #weather_sensors" ).fadeIn('slow');
+        }, 60000);
+  });
+  </script>
+
+<!-- Set a refresh for 1hr for FDR bar -->
+  <script>
+  $(document).ready(function()
+  {
+    setInterval(function()
+      {
+          $("#rating").fadeOut('slow').load(window.location.href + " #rating" ).fadeIn('slow');
+        }, 600000);
+  });
+  </script>
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:300,400,500,700" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" href="{% static 'weather/css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'weather/css/skeleton.css' %}">
+<link rel="stylesheet" href="{% static 'weather/css/style.css' %}">
+<style>
+  /* .columns, .column
+  {
+    padding: 10px;
+    border: 1px;
+  } */
+  p
+  {
+    text-align: center;
+  }
+</style>
+
+</head>
+
+<body>
+  <div class="top_graphic"></div>
+
+  <div class="container">
+    <!-- Title Row of page -->
+    <div class="row">
+      <div class="12 columns title">
+            <img id="header-logos" src="{% static 'weather/css/mtkrfb_logo.jpg' %}" /> <img id="header-logos" src="https://www.rfs.nsw.gov.au/__data/assets/image/0016/961/rfs-logo-main.png?v=0.3.1" /> Mt Kuring-Gai Knowledge Wall
+      </div>
+    </div>
+
+    <!-- FDR Row full width-->
+      <div class="row">
+        <div class="12 columns title">
+          Fire Danger Rating
+          <div class="rating">
+            <div class="arrow"></div>
+            <input type="radio" name="rating" id="cat" class="fdr cat" {% if fire_danger_rate == "Catastrophic" %} checked {% endif %}  value="Catastrophic"/><label for="cat">Catastrophic</label>
+            <input type="radio" name="rating" id="extreme" class="fdr extreme" {% if fire_danger_rate == "Extreme" %} checked {% endif %}  value="Extreme"/><label for="extreme">Extreme</label>
+            <input type="radio" name="rating" id="severe" class="fdr severe" {% if fire_danger_rate == "Severe" %} checked {% endif %}  value="Severe"/><label for="severe">Severe</label>
+            <input type="radio" name="rating" id="vhigh" class="fdr vhigh" {% if fire_danger_rate == "Very High" %} checked {% endif %}  value="Very High"/><label for="vhigh">Very High</label>
+            <input type="radio" name="rating" id="high" class="fdr high" {% if fire_danger_rate == "High" %} checked {% endif %}  value="High"/><label for="high">High</label>
+            <input type="radio" name="rating" id="low_med" class="fdr low_med" {% if fire_danger_rate == "Low/Moderate" %} checked {% endif %} value="Low/Moderate"/><label for="low_med">Low_Moderate</label>
+          </div>
+        </div>
+      </div>
+  </div>
+  <br />
+    <div class="container">
+      <div class="row">
+        <div class="two-thirds column">
+          ICON will go here
+          <!-- <iframe  width="100%" height="100%" src="https://icon.rfs.nsw.gov.au" frameborder="0" scrolling="auto" allowfullscreen>
+          </iframe> -->
+        </div>
+
+        <div id="weather_sensors" class="one-third column">
+          <table class="u-full-width" style="font-size: 160%">
+            <thead>
+              <tr>
+                <th colspan="2">Mount Kuring-Gai Weather Obs
+                  <br>
+                  <h6>Last Updated: {{ weather.localtime }}</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Temperature</b> <br /> <h4>{{ weather.temp }}C</h4></td>
+                <td>Temp Feels Like<br />  {{weather.heatindex}}C</td>
+              </tr>
+              <tr>
+                <td>Humidity<br />   {{ weather.humidity}}%</td>
+                <td>Dew Point<br />  {{weather.dewPoint}}C</td>
+              </tr>
+              <tr>
+                <td>Wind Speed<br />  {{weather.windspeed}}KM</td>
+                <td>Wind Direction<br />  {{direction}}</td>
+              </tr>
+              <tr>
+                <td>Wind Gusts<br />  {{weather.windgust}}KM</td>
+                <td>Pressure (Relative)  <br /> {{weather.psure}}</td>
+              </tr>
+              <tr>
+                <td>Drought Factor<br />  {{drought.0}}</td>
+                <td>Drought Factor Observed<br /> {{drought.1}}</td>
+              </tr>
+              <tr>
+                <td>StationID: {{ weather.stationid }}</td>
+                <td>FFDI <br> {{ffdi|stringformat:"d"}} </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+
+</body>
+</html>
