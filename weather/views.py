@@ -4,8 +4,10 @@ from lxml import html
 import math
 import json
 import os
+import logging
 from django.core.exceptions import ImproperlyConfigured
 
+log = logging.getLogger(__name__)
 
 # Create your views here.
 

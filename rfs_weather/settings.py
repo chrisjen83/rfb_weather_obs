@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,8 +27,7 @@ SECRET_KEY = 'pkp=2zq9l(g(uus-$5e6+w$v^$6hv0hdopi7m7w%=8__%!=o7*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chrisjen83.pythonanywhere.com', '127.0.0.1', 'rfbweather.azurewebsites.net']
-
+ALLOWED_HOSTS = ['chrisjen83.pythonanywhere.com', '127.0.0.1', 'rfbweather.azurewebsites.net', 'localhost']
 
 # Application definition
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'weather',
+    'weather.apps.WeatherConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +120,36 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Enable django logger
+
+LOGGING = {
+'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': '/tmp/debug.log'
+        }
+    },
+    'loggers': {
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['console', 'file']
+        }
+    }
+}

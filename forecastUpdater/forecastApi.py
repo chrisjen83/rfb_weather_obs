@@ -6,6 +6,8 @@ from lxml import html
 import math
 import logging
 
+logger = logging.getLogger(__name__)
+
 # Calculate Fire Danger Index from local observation
 
 
@@ -87,7 +89,7 @@ def post_influxdb():
         .field("Wind Gust", float(weather['windgust'])) \
         .field("Pressure", float(weather['psure'])) \
         .field("Wind Direction", float(weather['winddir'])) \
-        .field("DroughtF", df[0]) \
+        .field("DroughtF", float(df[0])) \
         .time((weather['obsTimeUTC']))
 
     # Write that into the InfluxDB
@@ -95,3 +97,9 @@ def post_influxdb():
 
 
     return None
+post_influxdb()
+
+try:
+    post_influxdb()
+except IndexError:
+    logger.exception("Something went wrong")
