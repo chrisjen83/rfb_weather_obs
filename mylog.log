@@ -1,0 +1,132 @@
+2020-10-21 09:25:15,761 [DEBUG] urllib3.connectionpool Starting new HTTPS connection (1): api.weather.com:443
+2020-10-21 09:25:16,339 [DEBUG] urllib3.connectionpool https://api.weather.com:443 "GET /v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal HTTP/1.1" 200 511
+2020-10-21 09:25:16,342 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-21 09:25:16,460 [DEBUG] urllib3.connectionpool Starting new HTTP connection (1): reg.bom.gov.au:80
+2020-10-21 09:25:16,487 [DEBUG] urllib3.connectionpool http://reg.bom.gov.au:80 "GET /products/reg/IDN60034.shtml HTTP/1.1" 200 28964
+2020-10-21 09:25:16,538 [DEBUG] forecastUpdater.forecastApi 7
+2020-10-21 09:25:16,546 [DEBUG] forecastUpdater.forecastApi 0.9653172140922321
+2020-10-21 09:25:17,158 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-21 09:25:17,230 [DEBUG] forecastUpdater.forecastApi 7
+2020-10-21 09:25:17,239 [DEBUG] forecastUpdater.forecastApi 0.9653172140922321
+2020-10-21 09:25:17,252 [INFO] forecastUpdater.forecastApi Posted to Influx
+2020-10-21 09:25:17,295 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-21 09:25:17,295 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-21 09:25:17,296 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-21 09:25:17,296 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-21 09:25:17,296 [INFO] apscheduler.scheduler Scheduler started
+2020-10-21 09:25:17,296 [DEBUG] apscheduler.scheduler Looking for jobs to run
+2020-10-21 09:25:17,296 [DEBUG] apscheduler.scheduler Next wakeup is due at 2020-10-21 09:30:17.295499+00:00 (in 299.998693 seconds)
+2020-10-21 09:25:17,363 [DEBUG] django.db.backends (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-21 09:25:17,363 [DEBUG] django.db.backends (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-21 09:25:17,367 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-21 09:25:17,367 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-21 09:27:45,334 [DEBUG] urllib3.connectionpool Starting new HTTPS connection (1): api.weather.com:443
+2020-10-21 09:27:45,932 [DEBUG] urllib3.connectionpool https://api.weather.com:443 "GET /v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal HTTP/1.1" 200 511
+2020-10-21 09:27:45,936 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-21 09:27:45,949 [DEBUG] urllib3.connectionpool Starting new HTTP connection (1): reg.bom.gov.au:80
+2020-10-21 09:27:46,031 [DEBUG] urllib3.connectionpool http://reg.bom.gov.au:80 "GET /products/reg/IDN60034.shtml HTTP/1.1" 200 28935
+2020-10-21 09:27:46,079 [DEBUG] forecastUpdater.forecastApi 7
+2020-10-21 09:27:46,088 [DEBUG] forecastUpdater.forecastApi 0.9688373715513813
+2020-10-21 09:27:46,677 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-21 09:27:46,790 [DEBUG] forecastUpdater.forecastApi 7
+2020-10-21 09:27:46,798 [DEBUG] forecastUpdater.forecastApi 0.9688373715513813
+2020-10-21 09:27:46,814 [INFO] forecastUpdater.forecastApi Posted to InfluxDB
+2020-10-21 09:27:46,855 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-21 09:27:46,855 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-21 09:27:46,856 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-21 09:27:46,856 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-21 09:27:46,856 [INFO] apscheduler.scheduler Scheduler started
+2020-10-21 09:27:46,856 [DEBUG] apscheduler.scheduler Looking for jobs to run
+2020-10-21 09:27:46,856 [DEBUG] apscheduler.scheduler Next wakeup is due at 2020-10-21 09:32:46.855409+00:00 (in 299.998516 seconds)
+2020-10-21 09:27:46,923 [DEBUG] django.db.backends (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-21 09:27:46,923 [DEBUG] django.db.backends (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-21 09:27:46,927 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-21 09:27:46,927 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-21 09:29:45,184 [DEBUG] urllib3.connectionpool Starting new HTTPS connection (1): api.weather.com:443
+2020-10-21 09:29:46,445 [DEBUG] urllib3.connectionpool https://api.weather.com:443 "GET /v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal HTTP/1.1" 200 511
+2020-10-21 09:29:46,447 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-21 09:29:46,457 [DEBUG] urllib3.connectionpool Starting new HTTP connection (1): reg.bom.gov.au:80
+2020-10-21 09:29:46,540 [DEBUG] urllib3.connectionpool http://reg.bom.gov.au:80 "GET /products/reg/IDN60034.shtml HTTP/1.1" 200 28935
+2020-10-21 09:29:46,585 [DEBUG] forecastUpdater.forecastApi 7
+2020-10-21 09:29:46,593 [DEBUG] forecastUpdater.forecastApi 0.9671530603006219
+2020-10-21 09:29:47,189 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-21 09:29:47,263 [DEBUG] forecastUpdater.forecastApi 7
+2020-10-21 09:29:47,273 [DEBUG] forecastUpdater.forecastApi 0.9671530603006219
+2020-10-21 09:29:47,290 [INFO] forecastUpdater.forecastApi Posted to InfluxDB
+2020-10-21 09:29:47,331 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-21 09:29:47,331 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-21 09:29:47,331 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-21 09:29:47,331 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-21 09:29:47,331 [INFO] apscheduler.scheduler Scheduler started
+2020-10-21 09:29:47,332 [DEBUG] apscheduler.scheduler Looking for jobs to run
+2020-10-21 09:29:47,332 [DEBUG] apscheduler.scheduler Next wakeup is due at 2020-10-21 09:34:47.330983+00:00 (in 299.998534 seconds)
+2020-10-21 09:29:47,379 [DEBUG] django.db.backends (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-21 09:29:47,379 [DEBUG] django.db.backends (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-21 09:29:47,381 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-21 09:29:47,381 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-21 19:53:09,138 [DEBUG] urllib3.connectionpool Starting new HTTPS connection (1): api.weather.com:443
+2020-10-21 19:53:09,479 [DEBUG] urllib3.connectionpool https://api.weather.com:443 "GET /v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal HTTP/1.1" 401 308
+2020-10-21 19:53:09,481 [ERROR] forecastUpdater.forecastApi Error logging to InfluxDB:
+Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Users/christopherjenkins/git/rfb_weather_obs/forecastUpdater/forecastApi.py", line 107, in <module>
+    post_influxdb()
+  File "/Users/christopherjenkins/git/rfb_weather_obs/forecastUpdater/forecastApi.py", line 49, in post_influxdb
+    mtk_weather = requests.get(url).json()
+  File "/usr/local/lib/python3.8/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/local/Cellar/python@3.8/3.8.5/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/Cellar/python@3.8/3.8.5/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/Cellar/python@3.8/3.8.5/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2020-10-21 19:53:09,484 [DEBUG] urllib3.connectionpool Starting new HTTPS connection (1): api.weather.com:443
+2020-10-21 19:53:09,811 [DEBUG] urllib3.connectionpool https://api.weather.com:443 "GET /v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal HTTP/1.1" 401 308
+2020-10-23 03:41:46,049 [DEBUG] urllib3.connectionpool Starting new HTTPS connection (1): api.weather.com:443
+2020-10-23 03:41:46,726 [DEBUG] urllib3.connectionpool https://api.weather.com:443 "GET /v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal HTTP/1.1" 200 513
+2020-10-23 03:41:46,729 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-23 03:41:46,740 [DEBUG] urllib3.connectionpool Starting new HTTP connection (1): reg.bom.gov.au:80
+2020-10-23 03:41:47,087 [DEBUG] urllib3.connectionpool http://reg.bom.gov.au:80 "GET /products/reg/IDN60034.shtml HTTP/1.1" 200 27628
+2020-10-23 03:41:47,133 [DEBUG] forecastUpdater.forecastApi 9
+2020-10-23 03:41:47,140 [DEBUG] forecastUpdater.forecastApi 3.4661951678854943
+2020-10-23 03:41:47,336 [DEBUG] forecastUpdater.forecastApi UG Weather API Results
+2020-10-23 03:41:47,420 [DEBUG] forecastUpdater.forecastApi 9
+2020-10-23 03:41:47,428 [DEBUG] forecastUpdater.forecastApi 3.4661951678854943
+2020-10-23 03:41:47,445 [INFO] forecastUpdater.forecastApi Posted to InfluxDB
+2020-10-23 03:41:47,489 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-23 03:41:47,489 [INFO] apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-10-23 03:41:47,490 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-23 03:41:47,490 [INFO] apscheduler.scheduler Added job "post_influxdb" to job store "default"
+2020-10-23 03:41:47,490 [INFO] apscheduler.scheduler Scheduler started
+2020-10-23 03:41:47,491 [DEBUG] apscheduler.scheduler Looking for jobs to run
+2020-10-23 03:41:47,491 [DEBUG] apscheduler.scheduler Next wakeup is due at 2020-10-23 03:46:47.489559+00:00 (in 299.997781 seconds)
+2020-10-23 03:41:47,565 [DEBUG] django.db.backends (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-23 03:41:47,565 [DEBUG] django.db.backends (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2020-10-23 03:41:47,569 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
+2020-10-23 03:41:47,569 [DEBUG] django.db.backends (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()

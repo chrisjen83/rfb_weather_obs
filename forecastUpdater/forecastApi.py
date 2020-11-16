@@ -6,7 +6,7 @@ from lxml import html
 import math
 import logging
 
-logger = logging.getLogger(__name__)
+logr = logging.getLogger(__name__)
 
 # Calculate Fire Danger Index from local observation
 
@@ -19,6 +19,7 @@ def ffdi(temp, humidity, df, windsp):
     windsp = float(windsp)
 
     k = 2*(math.exp((.987*math.log(df+0.001))-.45-(.0345*humidity)+(.0338*temp)+(.0234*windsp)))
+    logr.debug(k)
 
     return k
 
@@ -34,6 +35,7 @@ def drought():
     doc = html.fromstring(login.content)
     row1 = doc.xpath('//tr[54]/td[2]')
     df = row1[0].text.strip()
+    logr.debug(df)
 
     row2 = doc.xpath('//tr[54]/td[5]')
     observed = row2[0].text.strip()
@@ -45,6 +47,8 @@ def post_influxdb():
 
     url = 'https://api.weather.com/v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal'
     mtk_weather = requests.get(url).json()
+
+    logr.debug('UG Weather API Results', mtk_weather)
 
     weather = {
         'stationid': mtk_weather['observations'][0]['stationID'],
@@ -92,14 +96,17 @@ def post_influxdb():
         .field("DroughtF", float(df[0])) \
         .time((weather['obsTimeUTC']))
 
+
     # Write that into the InfluxDB
     write_api.write(record=p, bucket='weather', time_precision='s')
 
 
     return None
-post_influxdb()
 
 try:
     post_influxdb()
-except IndexError:
-    logger.exception("Something went wrong")
+except Exception as e:
+    logr.exception("Error logging to InfluxDB:\n%s" % e)
+
+post_influxdb()
+logr.info("Posted to InfluxDB")

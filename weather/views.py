@@ -7,7 +7,7 @@ import os
 import logging
 from django.core.exceptions import ImproperlyConfigured
 
-log = logging.getLogger(__name__)
+logr = logging.getLogger('weather.views')
 
 # Create your views here.
 
@@ -74,6 +74,7 @@ def fire_danger_rate(fdi):
 def index(request):
     url = 'https://api.weather.com/v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal'
     mtk_weather = requests.get(url).json()
+    logr.info(mtk_weather)
 
     weather = {
         'stationid': mtk_weather['observations'][0]['stationID'],

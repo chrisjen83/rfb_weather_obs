@@ -123,33 +123,101 @@ STATIC_URL = '/static/'
 
 # Enable django logger
 
+# LOGGING = {
+# 'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'console': {
+#             'format': '%(name)-12s %(levelname)-8s %(message)s'
+#         },
+#         'file': {
+#             'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+#         }
+#     },
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'console'
+#         },
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'formatter': 'file',
+#             'filename': '/tmp/debug.log'
+#         }
+#     },
+#     'loggers': {
+#         '': {
+#             'level': 'DEBUG',
+#             'handlers': ['console', 'file']
+#         }
+#     }
+# }
+
 LOGGING = {
 'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'formatters': {
-        'console': {
-            'format': '%(name)-12s %(levelname)-8s %(message)s'
-        },
-        'file': {
-            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
-        }
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s %(message)s'
+            },
     },
     'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'console'
-        },
-        'file': {
+        'default': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'file',
-            'filename': '/tmp/debug.log'
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'mylog.log',
+            'maxBytes': 1024 * 1024 * 5,    # 5MB
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'request_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'django_requests.log',
+            'maxBytes': 1024 * 1024 * 5,    # 5MB
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'server_template_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'django_server_template.log',
+            'maxBytes': 1024 * 1024 * 5,    # 5MB
+            'backupCount': 5,
+            'formatter': 'standard',
         }
     },
     'loggers': {
-        '': {
+        'django': {
+            'handlers': ['default'],
             'level': 'DEBUG',
-            'handlers': ['console', 'file']
-        }
+            'propagate': True,
+        },
+        '': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'weather.views': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['request_handler'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.server': {
+            'handlers': ['server_template_handler'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.template': {
+            'handlers': ['server_template_handler'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
     }
 }
