@@ -6,8 +6,17 @@ import json
 import os
 import logging
 from django.core.exceptions import ImproperlyConfigured
+import configparser
 
 logr = logging.getLogger('weather.views')
+
+# Reading in config.ini into the script to be used to connect to ECS.
+config = configparser.ConfigParser()
+config.read('weather_config.ini')
+
+bom_user = config["CONFIG"]["BOM_USER"]
+bom_pass = config['CONFIG']['BOM_PASS']
+u_weather_uri = config['CONFIG']['U_WEATHER_API']
 
 # Create your views here.
 
@@ -24,8 +33,8 @@ def direction(degrees):
 
 def drought():
 
-    user = 'bomw0107'
-    passwd = '50cLampe'
+    user = bom_user
+    passwd = bom_pass
 
     login = requests.get('http://reg.bom.gov.au/products/reg/IDN60034.shtml', auth=(user, passwd))
     doc = html.fromstring(login.content)
@@ -72,7 +81,7 @@ def fire_danger_rate(fdi):
 
 
 def index(request):
-    url = 'https://api.weather.com/v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal'
+    url = u_weather_uri
     mtk_weather = requests.get(url).json()
     logr.info(mtk_weather)
 

@@ -5,8 +5,21 @@ import json
 from lxml import html
 import math
 import logging
+import configparser
 
 logr = logging.getLogger(__name__)
+
+# Reading in config.ini into the script to be used to connect to ECS.
+config = configparser.ConfigParser()
+config.read('forecast_config.ini')
+
+bom_user = config["CONFIG"]["BOM_USER"]
+bom_pass = config['CONFIG']['BOM_PASS']
+u_weather_uri = config['CONFIG']['U_WEATHER_API']
+influx_server = config['CONFIG']['INFLUX_SERVER']
+influx_token = config['CONFIG']['INFLUX_TOKEN']
+influx_org = config['CONFIG']['INFLUX_ORG']
+influx_bucket = config['CONFIG']['INFLUX_BUCKET']
 
 # Calculate Fire Danger Index from local observation
 
@@ -28,8 +41,8 @@ def ffdi(temp, humidity, df, windsp):
 
 def drought():
 
-    user = 'bomw0107'
-    passwd = '50cLampe'
+    user = bom_user
+    passwd = bom_pass
 
     login = requests.get('http://reg.bom.gov.au/products/reg/IDN60034.shtml', auth=(user, passwd))
     doc = html.fromstring(login.content)
@@ -45,7 +58,7 @@ def drought():
 
 def post_influxdb():
 
-    url = 'https://api.weather.com/v2/pws/observations/current?stationId=ISYDNE764&format=json&units=m&apiKey=3d6cf8b25a784eb8acf8b25a784eb8c0&numericPrecision=decimal'
+    url = u_weather_uri
     mtk_weather = requests.get(url).json()
 
     logr.debug('UG Weather API Results', mtk_weather)
@@ -73,12 +86,12 @@ def post_influxdb():
     fdi = ffdi(weather["temp"], weather["humidity"], df[0], weather["windspeed"])
 
     # Enviromental settings for InfluxDB
-    token = "D1XnTSfuxIxQ3ttsMy3_R2wF2CSxzCn6QjCq_VPdvleT4FiJzNnJzbzVq9nPrK08DkAYqdlBbk2qyfOCdiGcHA=="
-    org = "RFS"
-    bucket = "weather"
+    token = influx_token
+    org = influx_org
+    bucket = influx_bucket
 
     # Setup connection to the DB
-    client = InfluxDBClient(url='http://localhost:8086', token=token, org=org)
+    client = InfluxDBClient(url=influx_server, token=token, org=org)
     write_api = client.write_api(write_options=SYNCHRONOUS)
     query_api = client.query_api()
 
