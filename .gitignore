@@ -1,2 +1,6 @@
 .DS_Store
 __pycache__
+django_requests.log
+django_server_template.log
+logfile.log
+mylog.log
