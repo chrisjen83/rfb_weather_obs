@@ -85,13 +85,9 @@ def post_influxdb():
     df = drought()
     fdi = ffdi(weather["temp"], weather["humidity"], df[0], weather["windspeed"])
 
-    # Enviromental settings for InfluxDB
-    token = influx_token
-    org = influx_org
-    bucket = influx_bucket
 
     # Setup connection to the DB
-    client = InfluxDBClient(url=influx_server, token=token, org=org)
+    client = InfluxDBClient(url=influx_server, token=influx_token, org=influx_org)
     write_api = client.write_api(write_options=SYNCHRONOUS)
     query_api = client.query_api()
 
@@ -106,12 +102,15 @@ def post_influxdb():
         .field("Wind Gust", float(weather['windgust'])) \
         .field("Pressure", float(weather['psure'])) \
         .field("Wind Direction", float(weather['winddir'])) \
+        .field("Precipitation", float(weather['precip'])) \
+        .field("Heat Index", float(weather['heatindex'])) \
         .field("DroughtF", float(df[0])) \
+        .field("FFDI", float(fdi)) \
         .time((weather['obsTimeUTC']))
 
 
     # Write that into the InfluxDB
-    write_api.write(record=p, bucket='weather', time_precision='s')
+    write_api.write(record=p, bucket=influx_bucket, time_precision='s')
 
 
     return None
