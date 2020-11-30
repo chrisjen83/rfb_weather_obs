@@ -87,7 +87,7 @@ def post_influxdb():
 
 
     # Setup connection to the DB
-    client = InfluxDBClient(url=influx_server, token=influx_token, org=influx_org)
+    client = InfluxDBClient(url='{}' .format(influx_server), token='{}' .format(influx_token), org= '{}' .format(influx_org))
     write_api = client.write_api(write_options=SYNCHRONOUS)
     query_api = client.query_api()
 
@@ -110,7 +110,7 @@ def post_influxdb():
 
 
     # Write that into the InfluxDB
-    write_api.write(record=p, bucket=influx_bucket, time_precision='s')
+    write_api.write(record=p, bucket='{}' .format(influx_bucket), time_precision='s')
 
 
     return None
