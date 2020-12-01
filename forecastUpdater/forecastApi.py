@@ -5,21 +5,30 @@ import json
 from lxml import html
 import math
 import logging
-import configparser
+# import configparser
 
 logr = logging.getLogger(__name__)
 
 # Reading in config.ini into the script to be used to connect to ECS.
-config = configparser.ConfigParser()
-config.read('forecast_config.ini')
+# config = configparser.ConfigParser()
+# config.read('forecast_config.ini')
+#
+# bom_user = config["CONFIG"]["BOM_USER"]
+# bom_pass = config['CONFIG']['BOM_PASS']
+# u_weather_uri = config['CONFIG']['U_WEATHER_API']
+# influx_server = config['CONFIG']['INFLUX_SERVER']
+# influx_token = config['CONFIG']['INFLUX_TOKEN']
+# influx_org = config['CONFIG']['INFLUX_ORG']
+# influx_bucket = config['CONFIG']['INFLUX_BUCKET']
 
-bom_user = config["CONFIG"]["BOM_USER"]
-bom_pass = config['CONFIG']['BOM_PASS']
-u_weather_uri = config['CONFIG']['U_WEATHER_API']
-influx_server = config['CONFIG']['INFLUX_SERVER']
-influx_token = config['CONFIG']['INFLUX_TOKEN']
-influx_org = config['CONFIG']['INFLUX_ORG']
-influx_bucket = config['CONFIG']['INFLUX_BUCKET']
+# Enviroment Variables set for Webapp deployment
+bom_user = os.environ['BOM_USER']
+bom_pass = os.environ['BOM_PASS']
+u_weather_uri = os.environ['U_WEATHER_API']
+influx_server = os.environ['INFLUX_SERVER']
+influx_token = os.environ['INFLUX_TOKEN']
+influx_org = os.environ['INFLUX_ORG']
+influx_bucket = os.environ['INFLUX_BUCKET']
 
 # Calculate Fire Danger Index from local observation
 

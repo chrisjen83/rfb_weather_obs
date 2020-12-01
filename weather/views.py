@@ -6,17 +6,22 @@ import json
 import os
 import logging
 from django.core.exceptions import ImproperlyConfigured
-import configparser
+# import configparser
 
 logr = logging.getLogger('weather.views')
 
 # Reading in config.ini into the script to be used to connect to ECS.
-config = configparser.ConfigParser()
-config.read('weather_config.ini')
+# config = configparser.ConfigParser()
+# config.read('weather_config.ini')
+#
+# bom_user = config["CONFIG"]["BOM_USER"]
+# bom_pass = config['CONFIG']['BOM_PASS']
+# u_weather_uri = config['CONFIG']['U_WEATHER_API']
 
-bom_user = config["CONFIG"]["BOM_USER"]
-bom_pass = config['CONFIG']['BOM_PASS']
-u_weather_uri = config['CONFIG']['U_WEATHER_API']
+# Enviroment Variables set for Webapp deployment
+bom_user = os.environ['BOM_USER']
+bom_pass = os.environ['BOM_PASS']
+u_weather_uri = os.environ['U_WEATHER_API']
 
 # Create your views here.
 

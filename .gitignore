@@ -4,5 +4,6 @@ django_requests.log
 django_server_template.log
 logfile.log
 mylog.log
+mylog.log.*
 weather_config.ini
 forecast_config.ini
