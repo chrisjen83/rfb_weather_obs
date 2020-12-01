@@ -27,7 +27,7 @@ SECRET_KEY = 'pkp=2zq9l(g(uus-$5e6+w$v^$6hv0hdopi7m7w%=8__%!=o7*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chrisjen83.pythonanywhere.com', '127.0.0.1', 'localhost', 'weather-obs.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
