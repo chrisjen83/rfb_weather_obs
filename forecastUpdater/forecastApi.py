@@ -5,6 +5,7 @@ import json
 from lxml import html
 import math
 import logging
+import os
 # import configparser
 
 logr = logging.getLogger(__name__)
