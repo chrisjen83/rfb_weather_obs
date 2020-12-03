@@ -1,0 +1,83 @@
+.box{
+  width: 900px;
+}
+p{
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+}
+.rating{
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #1AAD53, #00B0F0, #FFFD38, #FDBF2D, #FC0D1B);
+}
+
+.rating input{
+  display: none;
+}
+.rating label{
+  display: block;
+  cursor: pointer;
+  width: 700px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  color: #000;
+  font-size: 20px;
+  border-right: 1px solid #000;
+}
+.rating input[type="radio"]
+{
+  background: transparent;
+}
+
+.rating input[type="radio"]:checked + label::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.rating input[type="radio"]:checked + label:after
+{
+  content: "";
+  background: transparent url("arrow.png") no-repeat;
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  left: -80px;
+  top: 40px;
+  background-size: 30px 30px;
+}
+
+.title {
+  float: left;
+  font-family: "Myriad Pro",Helvetica,Arial,sans-serif;
+  font-size: 1.833em;
+  line-height: 1em;
+  font-weight: 700;
+  color: #231f20;
+  text-transform: uppercase;
+  /* padding: 55px 0 0 31px; */
+}
+#header-logos {
+  float: left;
+  line-height: 1em;
+  font-weight: 700;
+  padding: 20px 0 0 10px;
+  width: 90px;
+  height: 90px;
+}
+
+.top_graphic {
+  height: 25px;
+  background: url(https://www.rfs.nsw.gov.au/__data/assets/image/0007/57445/sprite.png?v=0.1.1) #ececec repeat-x 0 13px;
+  overflow: hidden;
+}
