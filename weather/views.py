@@ -118,4 +118,4 @@ def index(request):
                'fire_danger_rate': fire_danger_rate(fdi),
                }
 
-    return render(request, 'weather/index.html', context)
+    return render(request, 'index.html', context)
